@@ -8,10 +8,17 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 5;
+    public float jumpForce = 5;
+    public bool isCanJump = true;
     public Rigidbody2D rigidBody2D;
 
     private Vector2 moveVector;
     private InputAction moveAction;
+
+    private void Awake()
+    {
+        rigidBody2D = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -23,7 +30,13 @@ public class Player : MonoBehaviour
     {
         moveVector = moveAction.ReadValue<Vector2>();
 
-        this.calculateFacing();
+        CalculateFacing();
+
+        if (Keyboard.current[Key.Space].wasPressedThisFrame && isCanJump)
+        {
+            Jump();
+            isCanJump = false;
+        }
     }
 
 
@@ -33,7 +46,7 @@ public class Player : MonoBehaviour
     }
 
 
-    private void calculateFacing()
+    private void CalculateFacing()
     {
         if (moveVector.x < 0)
         {
@@ -43,6 +56,19 @@ public class Player : MonoBehaviour
         if (moveVector.x > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+    }
+
+    private void Jump()
+    {
+        rigidBody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isCanJump = true;
         }
     }
 }

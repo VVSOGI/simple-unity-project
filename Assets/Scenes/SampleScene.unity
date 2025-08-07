@@ -522,8 +522,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   jumpForce: 5
+  isCanJump: 1
   rigidBody2D: {fileID: 0}
-  isGround: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

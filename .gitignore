@@ -36,6 +36,8 @@
 *.mdb
 *.opendb
 *.VC.db
+*.csproj
+*.user
 
 # Unity3D generated meta files
 *.pidb.meta

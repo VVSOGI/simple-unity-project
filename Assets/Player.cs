@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float jumpForce = 5;
+    public float jumpDuration = 0.2f;
     public bool isCanJump = true;
+
     public Rigidbody2D rigidBody2D;
     public Animator animator;
 
@@ -37,6 +39,9 @@ public class Player : MonoBehaviour
         {
             Jump();
             isCanJump = false;
+            animator.SetBool("Jump", true);
+            StartCoroutine(EndJumpAnimation(jumpDuration));
+
         }
 
         if (Math.Abs(moveVector.x) > 0.1f)
@@ -70,10 +75,12 @@ public class Player : MonoBehaviour
         }
     }
 
+
     private void Jump()
     {
         rigidBody2D.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -81,5 +88,12 @@ public class Player : MonoBehaviour
         {
             isCanJump = true;
         }
+    }
+
+
+    private IEnumerator EndJumpAnimation(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        animator.SetBool("Jump", false);
     }
 }

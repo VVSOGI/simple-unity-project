@@ -180,6 +180,7 @@ MonoBehaviour:
   jumpForce: 5
   isCanJump: 1
   rigidBody2D: {fileID: 0}
+  animator: {fileID: 2118170621988968967}
 --- !u!95 &2118170621988968967
 Animator:
   serializedVersion: 7

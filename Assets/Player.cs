@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public float jumpForce = 5;
     public bool isCanJump = true;
     public Rigidbody2D rigidBody2D;
+    public Animator animator;
 
     private Vector2 moveVector;
     private InputAction moveAction;
@@ -36,6 +37,16 @@ public class Player : MonoBehaviour
         {
             Jump();
             isCanJump = false;
+        }
+
+        if (Math.Abs(moveVector.x) > 0.1f)
+        {
+            animator.SetFloat("Run", 1);
+        }
+
+        if (Math.Abs(moveVector.x) < 0.1f)
+        {
+            animator.SetFloat("Run", 0);
         }
     }
 

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 20f;
+    public float moveSpeed = 10f;
     public float jumpForce = 12f;
     public float jumpDuration = 0.3f;
     public bool isCanJump = true;

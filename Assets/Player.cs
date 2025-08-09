@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public float moveSpeed = 5;
-    public float jumpForce = 5;
+    public float moveSpeed = 20f;
+    public float jumpForce = 12f;
     public float jumpDuration = 0.2f;
     public bool isCanJump = true;
 
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
+
 
     private void Start()
     {
@@ -41,7 +42,6 @@ public class Player : MonoBehaviour
             isCanJump = false;
             animator.SetBool("Jump", true);
             StartCoroutine(EndJumpAnimation(jumpDuration));
-
         }
 
         if (Math.Abs(moveVector.x) > 0.1f)
@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isCanJump = true;
+            animator.Play("Idle");
         }
     }
 

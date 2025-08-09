@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 20f;
     public float jumpForce = 12f;
-    public float jumpDuration = 0.2f;
+    public float jumpDuration = 0.3f;
     public bool isCanJump = true;
 
     public Rigidbody2D rigidBody2D;
@@ -52,6 +52,11 @@ public class Player : MonoBehaviour
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Run", 0);
+        }
+
+        if (Keyboard.current[Key.LeftCtrl].wasPressedThisFrame)
+        {
+            animator.SetTrigger("Attack");
         }
     }
 

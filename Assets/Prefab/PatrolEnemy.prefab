@@ -179,10 +179,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   distance: 0.6
+  attackRange: 10
+  retrieveDistance: 2.5
+  chaseSpeed: 4
+  inRange: 0
   checkPoint: {fileID: 7216863793543206270}
+  player: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  animator: {fileID: 178336239777055523}
 --- !u!95 &178336239777055523
 Animator:
   serializedVersion: 7

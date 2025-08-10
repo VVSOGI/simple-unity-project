@@ -214,7 +214,7 @@ MonoBehaviour:
   attackRange: 10
   retrieveDistance: 2.5
   chaseSpeed: 4
-  attackRadius: 1
+  attackRadius: 1.3
   inRange: 0
   checkPoint: {fileID: 7216863793543206270}
   player: {fileID: 0}

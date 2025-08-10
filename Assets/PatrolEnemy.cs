@@ -18,11 +18,14 @@ public class PatrolEnemy : MonoBehaviour
     public float attackRange = 10f;
     public float retrieveDistance = 2.5f;
     public float chaseSpeed = 4f;
+    public float attackRadius = 1f;
     public bool inRange = false;
 
     public Transform checkPoint;
     public Transform player;
+    public Transform AttackPoint;
     public LayerMask layerMask;
+    public LayerMask attackLayerMask;
     public Animator animator;
 
     private Direction characterDirection = Direction.Left;
@@ -94,6 +97,17 @@ public class PatrolEnemy : MonoBehaviour
     }
 
 
+    public void Attack()
+    {
+        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackRadius, attackLayerMask);
+
+        if (colliderInfo)
+        {
+            Debug.Log(colliderInfo.transform.name);
+        }
+    }
+
+
     private void OnDrawGizmosSelected()
     {
         if (!checkPoint)
@@ -106,6 +120,9 @@ public class PatrolEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
 
+        if (!AttackPoint) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(AttackPoint.position, attackRadius);
     }
 
 

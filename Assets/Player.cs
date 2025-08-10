@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public int maxHealth = 3;
     public float moveSpeed = 10f;
     public float jumpForce = 12f;
     public float jumpDuration = 0.3f;
@@ -32,6 +33,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (maxHealth <= 0)
+        {
+            Die();
+        }
+
+
         moveVector = moveAction.ReadValue<Vector2>();
 
         CalculateFacing();
@@ -101,5 +108,21 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         animator.SetBool("Jump", false);
+    }
+
+
+    private void GetDamage(int damage)
+    {
+        if (maxHealth <= 0)
+        {
+            return;
+        }
+
+        maxHealth -= damage;
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player Died");
     }
 }

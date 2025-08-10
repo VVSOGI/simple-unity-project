@@ -224,7 +224,7 @@ MonoBehaviour:
     m_Bits: 64
   attackLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   animator: {fileID: 178336239777055523}
 --- !u!95 &178336239777055523
 Animator:

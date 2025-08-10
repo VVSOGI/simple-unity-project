@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  jumpForce: 12
+  jumpForce: 15
   jumpDuration: 0.2
   isCanJump: 1
   rigidBody2D: {fileID: 0}

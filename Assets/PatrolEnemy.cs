@@ -29,7 +29,10 @@ public class PatrolEnemy : MonoBehaviour
 
     void Start()
     {
-
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player").transform;
+        }
     }
 
 

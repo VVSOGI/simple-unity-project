@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3055583295894027651}
   - component: {fileID: 203563787214695340}
   - component: {fileID: 2118170621988968967}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622bb5308a7ad774baf7a3545d778429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
   moveSpeed: 20
   jumpForce: 15
   jumpDuration: 0.2

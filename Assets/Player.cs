@@ -3,21 +3,43 @@ using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int currentHealth = 3;
     public float moveSpeed = 10f;
     public float jumpForce = 12f;
     public float jumpDuration = 0.3f;
     public bool isCanJump = true;
+    public Text health;
 
     public Rigidbody2D rigidBody2D;
     public Animator animator;
 
     private Vector2 moveVector;
     private InputAction moveAction;
+
+
+    public void GetDamage(int damage)
+    {
+        if (currentHealth == 0)
+        {
+            return;
+        }
+
+
+        if (currentHealth <= 1)
+        {
+            currentHealth -= damage;
+            Die();
+            return;
+        }
+
+        currentHealth -= damage;
+    }
+
 
     private void Awake()
     {
@@ -33,12 +55,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (maxHealth <= 0)
-        {
-            Die();
-        }
-
-
+        health.text = currentHealth.ToString();
         moveVector = moveAction.ReadValue<Vector2>();
 
         CalculateFacing();
@@ -110,16 +127,6 @@ public class Player : MonoBehaviour
         animator.SetBool("Jump", false);
     }
 
-
-    private void GetDamage(int damage)
-    {
-        if (maxHealth <= 0)
-        {
-            return;
-        }
-
-        maxHealth -= damage;
-    }
 
     private void Die()
     {

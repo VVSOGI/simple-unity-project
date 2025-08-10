@@ -103,7 +103,12 @@ public class PatrolEnemy : MonoBehaviour
 
         if (colliderInfo)
         {
-            Debug.Log(colliderInfo.transform.name);
+            Player player = colliderInfo.gameObject.GetComponent<Player>();
+
+            if (player)
+            {
+                player.GetDamage(1);
+            }
         }
     }
 

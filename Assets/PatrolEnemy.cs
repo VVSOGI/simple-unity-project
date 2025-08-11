@@ -13,6 +13,7 @@ public enum Direction
 
 public class PatrolEnemy : MonoBehaviour
 {
+    public float health = 3;
     public float moveSpeed = 2f;
     public float distance = 0.6f;
     public float attackRange = 10f;
@@ -41,6 +42,12 @@ public class PatrolEnemy : MonoBehaviour
 
     void Update()
     {
+        if (health == 0)
+        {
+            animator.SetBool("Idle", true);
+            return;
+        }
+
         if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
             inRange = true;
@@ -94,6 +101,18 @@ public class PatrolEnemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
             characterDirection = Direction.Left;
         }
+    }
+
+
+    public void GetDamaged(int damage)
+    {
+        if (health == 0)
+        {
+            return;
+        }
+
+        animator.SetTrigger("Hurt");
+        health -= damage;
     }
 
 

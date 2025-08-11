@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpForce = 12f;
     public float jumpDuration = 0.3f;
-    public float attackRadius = 1;
+    public float attackRadius = 1.5f;
     public bool isCanJump = true;
     public Text health;
 
@@ -28,11 +28,12 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackLayerMask);
+        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackRadius, attackLayerMask);
 
         if (colliderInfo)
         {
-            Debug.Log(colliderInfo.gameObject);
+            PatrolEnemy patrolEnemy = colliderInfo.gameObject.GetComponent<PatrolEnemy>();
+            patrolEnemy.GetDamaged(1);
         }
     }
 

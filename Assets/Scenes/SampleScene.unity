@@ -419,10 +419,6 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1102991292}
-    - target: {fileID: 203563787214695340, guid: 30199b17da33bee4eaf3e32518b5d695, type: 3}
-      propertyPath: attackRadius
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2908657871056008812, guid: 30199b17da33bee4eaf3e32518b5d695, type: 3}
       propertyPath: m_Name
       value: Player

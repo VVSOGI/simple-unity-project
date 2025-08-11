@@ -42,9 +42,9 @@ public class PatrolEnemy : MonoBehaviour
 
     void Update()
     {
-        if (health == 0)
+        if (health <= 0)
         {
-            animator.SetBool("Idle", true);
+            Died();
             return;
         }
 
@@ -101,6 +101,12 @@ public class PatrolEnemy : MonoBehaviour
             transform.eulerAngles = new Vector3(0, 0, 0);
             characterDirection = Direction.Left;
         }
+    }
+
+
+    public void Died()
+    {
+        Destroy(this.gameObject);
     }
 
 

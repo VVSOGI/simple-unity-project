@@ -27,11 +27,13 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
     private InputAction moveAction;
     private GameManager gameManager;
+    private SceneManager sceneManager;
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
         gameManager = FindFirstObjectByType<GameManager>();
+        sceneManager = FindFirstObjectByType<SceneManager>();
     }
 
 
@@ -159,6 +161,7 @@ public class Player : MonoBehaviour
         {
             gameManager.isGameActive = false;
             gameManager.isVictory = true;
+            sceneManager.LoadLevel(2);
         }
     }
 

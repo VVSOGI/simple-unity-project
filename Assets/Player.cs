@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -12,14 +13,28 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public float jumpForce = 12f;
     public float jumpDuration = 0.3f;
+    public float attackRadius = 1;
     public bool isCanJump = true;
     public Text health;
 
     public Rigidbody2D rigidBody2D;
     public Animator animator;
+    public Transform AttackPoint;
+    public LayerMask attackLayerMask;
 
     private Vector2 moveVector;
     private InputAction moveAction;
+
+
+    public void Attack()
+    {
+        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackLayerMask);
+
+        if (colliderInfo)
+        {
+            Debug.Log(colliderInfo.gameObject);
+        }
+    }
 
 
     public void GetDamage(int damage)
@@ -131,5 +146,13 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
+    }
+
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!AttackPoint) return;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(AttackPoint.position, attackRadius);
     }
 }

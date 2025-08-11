@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public bool isGameActive = true;
+    public bool isVictory = false;
 
     void start()
     {

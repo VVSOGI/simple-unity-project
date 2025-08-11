@@ -26,10 +26,12 @@ public class Player : MonoBehaviour
 
     private Vector2 moveVector;
     private InputAction moveAction;
+    private GameManager gameManager;
 
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
+        gameManager = FindFirstObjectByType<GameManager>();
     }
 
 
@@ -151,6 +153,12 @@ public class Player : MonoBehaviour
                 coinAnimator.SetBool("Collect", true);
                 Destroy(other.gameObject, 1f);
             }
+        }
+
+        if (other.gameObject.name == "Destination")
+        {
+            gameManager.isGameActive = false;
+            gameManager.isVictory = true;
         }
     }
 

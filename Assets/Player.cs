@@ -9,6 +9,7 @@ using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
+    public int currentCoin = 0;
     public int currentHealth = 3;
     public float moveSpeed = 10f;
     public float jumpForce = 12f;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     public float attackRadius = 1.5f;
     public bool isCanJump = true;
     public Text health;
+    public Text coinText;
 
     public Rigidbody2D rigidBody2D;
     public Animator animator;
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         health.text = currentHealth.ToString();
+        coinText.text = currentCoin.ToString();
         moveVector = moveAction.ReadValue<Vector2>();
 
         CalculateFacing();
@@ -132,6 +135,22 @@ public class Player : MonoBehaviour
         {
             isCanJump = true;
             animator.Play("Idle");
+        }
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.name == "Coin")
+        {
+            Animator coinAnimator = other.GetComponent<Animator>();
+            Debug.Log(coinAnimator.name);
+            if (coinAnimator != null && !coinAnimator.GetBool("Collect"))
+            {
+                currentCoin += 1;
+                coinAnimator.SetBool("Collect", true);
+                Destroy(other.gameObject, 1f);
+            }
         }
     }
 

@@ -29,6 +29,7 @@ public class PatrolEnemy : MonoBehaviour
     public LayerMask attackLayerMask;
     public Animator animator;
 
+    private GameManager gameManager;
     private Direction characterDirection = Direction.Left;
 
     void Start()
@@ -37,11 +38,21 @@ public class PatrolEnemy : MonoBehaviour
         {
             player = GameObject.FindWithTag("Player").transform;
         }
+
+        gameManager = FindFirstObjectByType<GameManager>();
+
     }
 
 
     void Update()
     {
+        if (!gameManager.isGameActive)
+        {
+            animator.SetBool("Idle", true);
+            return;
+        }
+
+
         if (health <= 0)
         {
             Died();

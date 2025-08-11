@@ -25,44 +25,6 @@ public class Player : MonoBehaviour
     private Vector2 moveVector;
     private InputAction moveAction;
 
-
-    public void Attack()
-    {
-        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackRadius, attackLayerMask);
-
-        if (colliderInfo)
-        {
-            PatrolEnemy patrolEnemy = colliderInfo.gameObject.GetComponent<PatrolEnemy>();
-            patrolEnemy.GetDamaged(1);
-        }
-    }
-
-
-    public void GetDamage(int damage)
-    {
-        if (currentHealth == 0)
-        {
-            return;
-        }
-
-
-        if (currentHealth <= 1)
-        {
-            currentHealth -= damage;
-            Die();
-            return;
-        }
-
-        currentHealth -= damage;
-    }
-
-
-    private void Awake()
-    {
-        rigidBody2D = GetComponent<Rigidbody2D>();
-    }
-
-
     private void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -107,6 +69,43 @@ public class Player : MonoBehaviour
     }
 
 
+    public void Attack()
+    {
+        Collider2D colliderInfo = Physics2D.OverlapCircle(AttackPoint.position, attackRadius, attackLayerMask);
+
+        if (colliderInfo)
+        {
+            PatrolEnemy patrolEnemy = colliderInfo.gameObject.GetComponent<PatrolEnemy>();
+            patrolEnemy.GetDamaged(1);
+        }
+    }
+
+
+    public void GetDamage(int damage)
+    {
+        if (currentHealth == 0)
+        {
+            return;
+        }
+
+
+        if (currentHealth <= 1)
+        {
+            currentHealth -= damage;
+            Die();
+            return;
+        }
+
+        currentHealth -= damage;
+    }
+
+
+    private void Awake()
+    {
+        rigidBody2D = GetComponent<Rigidbody2D>();
+    }
+
+
     private void CalculateFacing()
     {
         if (moveVector.x < 0)
@@ -147,6 +146,8 @@ public class Player : MonoBehaviour
     private void Die()
     {
         Debug.Log("Player Died");
+        GameManager gameManager = FindFirstObjectByType<GameManager>();
+        gameManager.isGameActive = false;
     }
 
 

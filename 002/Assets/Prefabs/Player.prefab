@@ -200,7 +200,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -261,9 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42fede683cc8454a980d99301ea651c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 1.5
-  timeToApex: 0.4
-  timeToFall: 0.3
+  jumpHeight: 3
+  timeToApex: 0.35
+  timeToFall: 0.35
   coyoteTime: 0.2
   jumpBufferTime: 0.2
   lowJumpMultiplier: 2

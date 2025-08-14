@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,9 +6,11 @@ public class Player : MonoBehaviour
 {
     public string playerName = "Benny";
     public float moveSpeed = 2.5f;
-    private float vectorX = 0;
 
     public Rigidbody2D rb;
+    public Animator animator;
+
+    private float vectorX = 0;
     private InputAction inputAction;
 
     void Start()
@@ -29,6 +32,16 @@ public class Player : MonoBehaviour
         if (vectorX < 0)
         {
             ChangeFaceLeft();
+        }
+
+        if (Math.Abs(moveVector.x) > 0.1f)
+        {
+            animator.SetFloat("Move", 1);
+        }
+
+        if (Math.Abs(moveVector.x) < 0.1f)
+        {
+            animator.SetFloat("Move", 0);
         }
     }
 

@@ -10,11 +10,6 @@ public class PlayerAttack : MonoBehaviour
     public PlayerJump playerJump;
 
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         HandleInput();

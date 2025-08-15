@@ -37,8 +37,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 
         Vector3 direction = (mouseWorldPos - playerTransform.position).normalized;
 
-        Debug.Log($"공격 방향: {direction}");
-
         if (direction.x > 0) player.ChangeFaceRight();
         if (direction.x < 0) player.ChangeFaceLeft();
     }

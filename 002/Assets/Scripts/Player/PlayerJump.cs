@@ -13,6 +13,9 @@ public class PlayerJump : MonoBehaviour
     public float jumpBufferTime = 0.2f;
     public float lowJumpMultiplier = 2f;
 
+    [Header("Animator")]
+    public Animator animator;
+
     private Rigidbody2D rb;
     private bool isGrounded;
 
@@ -82,7 +85,7 @@ public class PlayerJump : MonoBehaviour
     void Jump()
     {
         CalculatePhysics();
-
+        animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
     }
 
@@ -109,6 +112,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            animator.SetBool("IsGrounded", true);
             isGrounded = true;
         }
     }
@@ -117,6 +121,7 @@ public class PlayerJump : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            animator.SetBool("IsGrounded", false);
             isGrounded = false;
         }
     }

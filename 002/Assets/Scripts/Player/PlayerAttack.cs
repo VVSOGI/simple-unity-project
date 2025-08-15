@@ -9,10 +9,21 @@ public class PlayerAttack : MonoBehaviour
     [Header("Jump")]
     public PlayerJump playerJump;
 
+    [Header("Collider")]
+    public Collider2D[] enemyColliders;
 
-    void Update()
+    [SerializeField] private float attackRadius = 0.6f;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private LayerMask enemyMask;
+
+    public void Update()
     {
         HandleInput();
+    }
+
+    public void DamageEnemies()
+    {
+        enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyMask);
     }
 
     private void HandleInput()
@@ -26,5 +37,10 @@ public class PlayerAttack : MonoBehaviour
     private void PerformAttack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

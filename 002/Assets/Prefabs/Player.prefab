@@ -70,7 +70,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.051365614, y: -0.13872975}
+  m_Offset: {x: 0.051365614, y: -0.11336434}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -80,7 +80,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9708142, y: 1.7706298}
+  m_Size: {x: 0.9708142, y: 1.7198989}
   m_EdgeRadius: 0
 --- !u!50 &1878664496464176482
 Rigidbody2D:
@@ -98,7 +98,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7b000efa7571e5d468ef20e02f994b1b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

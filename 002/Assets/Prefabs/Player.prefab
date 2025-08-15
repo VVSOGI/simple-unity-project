@@ -124,8 +124,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: Benny
   moveSpeed: 8
+  canMove: 1
   rb: {fileID: 1878664496464176482}
   animator: {fileID: 409374893376587861}
+  playerJump: {fileID: 6040665130651821937}
 --- !u!114 &6040665130651821937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +143,7 @@ MonoBehaviour:
   jumpHeight: 3
   timeToApex: 0.35
   timeToFall: 0.35
+  canJump: 1
   coyoteTime: 0.2
   jumpBufferTime: 0.2
   lowJumpMultiplier: 2
@@ -284,3 +287,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e64e646b0f69761448435d2ee588b65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 8203432497321170331}
+  mainCamera: {fileID: 0}

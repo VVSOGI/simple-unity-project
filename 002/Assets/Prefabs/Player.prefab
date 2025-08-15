@@ -144,6 +144,7 @@ MonoBehaviour:
   jumpBufferTime: 0.2
   lowJumpMultiplier: 2
   animator: {fileID: 409374893376587861}
+  dustPrefab: {fileID: 0}
 --- !u!1 &7006468516761855025
 GameObject:
   m_ObjectHideFlags: 0

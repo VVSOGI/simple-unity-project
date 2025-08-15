@@ -18,6 +18,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool isGrounded;
+    private bool firstJump = false;
 
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
@@ -74,11 +75,12 @@ public class PlayerJump : MonoBehaviour
 
     void HandleJumpBuffer()
     {
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump)
         {
             Jump();
             jumpBufferCounter = 0f;
             coyoteTimeCounter = 0f;
+            firstJump = true;
         }
     }
 
@@ -114,6 +116,7 @@ public class PlayerJump : MonoBehaviour
         {
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
+            firstJump = false;
         }
     }
 

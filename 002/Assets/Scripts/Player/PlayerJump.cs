@@ -17,7 +17,7 @@ public class PlayerJump : MonoBehaviour
     public Animator animator;
 
     [Header("Effect")]
-    public ParticleSystem dustEffect;
+    public ParticleSystem dustPrefab;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -122,7 +122,6 @@ public class PlayerJump : MonoBehaviour
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
             firstJump = false;
-            dustEffect.transform.position = transform.position + Vector3.down * 1f;
             PlayDustEffect();
         }
     }
@@ -149,6 +148,8 @@ public class PlayerJump : MonoBehaviour
 
     private void PlayDustEffect()
     {
-        dustEffect.Play();
+        ParticleSystem newDust = Instantiate(dustPrefab, transform.position + Vector3.down * 1f, dustPrefab.transform.rotation);
+        newDust.Play();
+        Destroy(newDust.gameObject, 2f);
     }
 }

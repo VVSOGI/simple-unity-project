@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
     public float jumpHeight = 3.5f;
     public float timeToApex = 0.3f;
     public float timeToFall = 0.3f;
+    public bool canJump = true;
 
     [Header("Advanced Features")]
     public float coyoteTime = 0.2f;
@@ -80,7 +81,7 @@ public class PlayerJump : MonoBehaviour
 
     private void HandleJumpBuffer()
     {
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump)
+        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump && canJump)
         {
             Jump();
             jumpBufferCounter = 0f;

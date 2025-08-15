@@ -6,14 +6,32 @@ public class Player : MonoBehaviour
 {
     public string playerName = "Benny";
     public float moveSpeed = 8f;
+    public bool canMove = true;
 
     public Rigidbody2D rb;
     public Animator animator;
+    public PlayerJump playerJump;
 
     private float vectorX = 0;
     private InputAction inputAction;
 
-    void Start()
+    public void changeJumpAndMovementState(bool state)
+    {
+        canMove = state;
+        playerJump.canJump = state;
+    }
+
+    public void ChangeFaceLeft()
+    {
+        transform.eulerAngles = new Vector3(0, -180f, 0);
+    }
+
+    public void ChangeFaceRight()
+    {
+        transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    private void Start()
     {
         inputAction = InputSystem.actions.FindAction("Move");
     }
@@ -22,7 +40,18 @@ public class Player : MonoBehaviour
     {
         Vector2 moveVector = inputAction.ReadValue<Vector2>();
         vectorX = NormalizeVectorX(moveVector.x);
-        rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
+
+        if (!canMove)
+        {
+            rb.linearVelocity = new Vector2(vectorX * moveSpeed / 4, rb.linearVelocity.y);
+            return;
+        }
+
+        if (canMove)
+        {
+            rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
+
+        }
 
         if (vectorX > 0)
         {
@@ -57,15 +86,5 @@ public class Player : MonoBehaviour
         }
 
         return 0;
-    }
-
-    private void ChangeFaceLeft()
-    {
-        transform.eulerAngles = new Vector3(0, -180f, 0);
-    }
-
-    private void ChangeFaceRight()
-    {
-        transform.eulerAngles = new Vector3(0, 0, 0);
     }
 }

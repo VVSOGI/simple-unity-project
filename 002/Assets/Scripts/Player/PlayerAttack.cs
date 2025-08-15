@@ -9,9 +9,13 @@ public class PlayerAttack : MonoBehaviour
     [Header("Jump")]
     public PlayerJump playerJump;
 
+    private Player player;
+    private Rigidbody2D rb;
+
     void Start()
     {
-
+        player = GetComponent<Player>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -23,11 +27,11 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame && playerJump.isGrounded)
         {
-            AttemptAttack();
+            PerformAttack();
         }
     }
 
-    private void AttemptAttack()
+    private void PerformAttack()
     {
         animator.SetTrigger("Attack");
     }

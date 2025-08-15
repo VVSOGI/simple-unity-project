@@ -12,6 +12,7 @@ public class PlayerJump : MonoBehaviour
     public float coyoteTime = 0.2f;
     public float jumpBufferTime = 0.2f;
     public float lowJumpMultiplier = 2f;
+    public bool isGrounded;
 
     [Header("Animator")]
     public Animator animator;
@@ -20,7 +21,6 @@ public class PlayerJump : MonoBehaviour
     public ParticleSystem dustPrefab;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
     private bool firstJump = false;
 
     private float coyoteTimeCounter;

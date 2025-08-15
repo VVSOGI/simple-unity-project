@@ -16,6 +16,9 @@ public class PlayerJump : MonoBehaviour
     [Header("Animator")]
     public Animator animator;
 
+    [Header("Effect")]
+    public ParticleSystem dustEffect;
+
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool firstJump = false;
@@ -27,21 +30,23 @@ public class PlayerJump : MonoBehaviour
     private float downGravity;
     private float jumpVelocity;
 
-    void Start()
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
 
         CalculatePhysics();
     }
 
-    void CalculatePhysics()
+    private void CalculatePhysics()
     {
         upGravity = -(2 * jumpHeight) / Mathf.Pow(timeToApex, 2);
         downGravity = -(2 * jumpHeight) / Mathf.Pow(timeToFall, 2);
         jumpVelocity = Mathf.Abs(upGravity) * timeToApex;
     }
 
-    void Update()
+    private void Update()
     {
         HandleInput();
         HandleCoyoteTime();
@@ -49,7 +54,7 @@ public class PlayerJump : MonoBehaviour
         ApplyCustomGravity();
     }
 
-    void HandleInput()
+    private void HandleInput()
     {
         if (Keyboard.current[Key.Space].wasPressedThisFrame)
         {
@@ -61,7 +66,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void HandleCoyoteTime()
+    private void HandleCoyoteTime()
     {
         if (isGrounded)
         {
@@ -73,7 +78,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void HandleJumpBuffer()
+    private void HandleJumpBuffer()
     {
         if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump)
         {
@@ -84,14 +89,14 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void Jump()
+    private void Jump()
     {
         CalculatePhysics();
         animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
     }
 
-    void ApplyCustomGravity()
+    private void ApplyCustomGravity()
     {
         Vector2 velocity = rb.linearVelocity;
 
@@ -110,17 +115,19 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
             firstJump = false;
+            dustEffect.transform.position = transform.position + Vector3.down * 1f;
+            PlayDustEffect();
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -129,7 +136,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (Application.isPlaying)
         {
@@ -138,5 +145,10 @@ public class PlayerJump : MonoBehaviour
             Vector3 pos = startPos + jumpHeight * Vector3.up;
             Gizmos.DrawWireSphere(pos, 0.1f);
         }
+    }
+
+    private void PlayDustEffect()
+    {
+        dustEffect.Play();
     }
 }

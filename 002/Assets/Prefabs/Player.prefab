@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Benny
-  moveSpeed: 2.5
+  moveSpeed: 8
   rb: {fileID: 1878664496464176482}
   animator: {fileID: 409374893376587861}
 --- !u!114 &6040665130651821937

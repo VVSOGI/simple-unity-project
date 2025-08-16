@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask enemyMask;
 
+    [Header("Basic Attriubes")]
+    [SerializeField] private float attackAction1 = 1;
+
     public void Update()
     {
         HandleInput();
@@ -24,6 +27,11 @@ public class PlayerAttack : MonoBehaviour
     public void DamageEnemies()
     {
         enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyMask);
+
+        foreach (Collider2D enemy in enemyColliders)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackAction1);
+        }
     }
 
     private void HandleInput()

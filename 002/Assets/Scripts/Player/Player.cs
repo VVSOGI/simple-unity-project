@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
-
         }
 
         if (vectorX > 0)

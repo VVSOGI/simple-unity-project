@@ -29,6 +29,12 @@ public class Enemy : MonoBehaviour
 
         if (timer < 0)
         {
+            TurnWhite();
         }
+    }
+
+    private void TurnWhite()
+    {
+        sr.color = Color.white;
     }
 }

@@ -30,13 +30,16 @@ public class EnemySkeleton : Enemy
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (facing == Direction.Right)
         {
             rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);

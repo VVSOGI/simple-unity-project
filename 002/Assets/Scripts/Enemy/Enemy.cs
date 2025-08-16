@@ -18,12 +18,12 @@ public class Enemy : MonoBehaviour
         totalHealth -= damage;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Debug.Log(sr.name);
         timer -= Time.deltaTime;

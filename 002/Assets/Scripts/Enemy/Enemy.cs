@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float timer;
 
     [Header("Enemy Basic Attributes")]
+    [SerializeField] private string enemyName;
     [SerializeField] private float totalHealth = 3;
+    [SerializeField] private float timer;
 
-    private SpriteRenderer sr;
     private float hitDuration = 1f;
+    private SpriteRenderer sr;
 
     public void TakeDamage(float damage)
     {
@@ -26,14 +27,8 @@ public class Enemy : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (timer < 0 && sr.color != Color.white)
+        if (timer < 0)
         {
-            TurnWhite();
         }
-    }
-
-    private void TurnWhite()
-    {
-        sr.color = Color.white;
     }
 }

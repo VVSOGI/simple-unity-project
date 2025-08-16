@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log(sr.name);
         timer -= Time.deltaTime;
 
         if (timer < 0)

@@ -2,18 +2,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float timer;
+
     [Header("Enemy Basic Attributes")]
     [SerializeField] private float totalHealth = 3;
 
     private SpriteRenderer sr;
-    private float hitDuration = 1;
+    private float hitDuration = 1f;
 
     public void TakeDamage(float damage)
     {
         sr.color = Color.red;
+        timer = hitDuration;
         totalHealth -= damage;
-
-        Invoke(nameof(TurnWhite), hitDuration);
     }
 
     private void Start()
@@ -23,9 +24,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (totalHealth == 0)
+        timer -= Time.deltaTime;
+
+        if (timer < 0 && sr.color != Color.white)
         {
-            Debug.Log("Enemy is down");
+            TurnWhite();
         }
     }
 

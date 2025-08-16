@@ -19,6 +19,7 @@ public class EnemySkeleton : Enemy
 
     private Rigidbody2D rb;
     private Direction facing = Direction.Right;
+    private Animator animator;
 
     public void ChangeFaceLeft()
     {
@@ -34,10 +35,17 @@ public class EnemySkeleton : Enemy
     {
         base.Start();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     protected override void Update()
     {
+        if (isDeath)
+        {
+            animator.SetBool("Death", true);
+            return;
+        }
+
         base.Update();
 
         if (facing == Direction.Right)

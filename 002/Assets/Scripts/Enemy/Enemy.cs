@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timer;
 
     private float hitDuration = 1f;
-    private SpriteRenderer sr;
+    [SerializeField] private SpriteRenderer sr;
 
     public void TakeDamage(float damage)
     {
@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(sr.name);
         timer -= Time.deltaTime;
 
         if (timer < 0)

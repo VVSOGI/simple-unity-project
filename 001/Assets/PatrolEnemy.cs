@@ -165,6 +165,4 @@ public class PatrolEnemy : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(AttackPoint.position, attackRadius);
     }
-
-
 }

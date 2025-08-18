@@ -11,16 +11,19 @@ public class EnemySkeleton : Enemy
     public float moveSpeed = 2f;
     public float checkDistance = 0.6f;
     public float dropDistance = 2f;
+    public bool isCanMove = true;
 
     [SerializeField] private LayerMask checkLayerMask;
     [SerializeField] private Transform checkPoint;
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
     [SerializeField] private Direction facing = Direction.Right;
+    [SerializeField] private float hitDuration = 2f;
 
     private Rigidbody2D rb;
     private Animator animator;
-    private bool isCanMove = true;
+
+    private float timer = 0;
 
     public void ChangeFaceLeft()
     {
@@ -39,8 +42,10 @@ public class EnemySkeleton : Enemy
 
     public void StopMove()
     {
+        timer = hitDuration;
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         isCanMove = false;
+        animator.SetFloat("Move", 0);
     }
 
     protected override void Start()
@@ -53,6 +58,12 @@ public class EnemySkeleton : Enemy
     protected override void Update()
     {
         base.Update();
+
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            return;
+        }
 
         if (isDeath)
         {

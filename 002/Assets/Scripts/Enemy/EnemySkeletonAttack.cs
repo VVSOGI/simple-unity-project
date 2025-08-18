@@ -4,7 +4,6 @@ public class EnemySkeletonAttack : MonoBehaviour
 {
     [SerializeField] private float attackRadius = 0.6f;
     [SerializeField] private float dropDistance = 0.6f;
-    [SerializeField] private float hitDuration = 1f;
     [SerializeField] private LayerMask attackLayerMask;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask attackCheckLayerMask;
@@ -54,10 +53,9 @@ public class EnemySkeletonAttack : MonoBehaviour
     {
         RaycastHit2D checkPlayer = Physics2D.Raycast(attackCheckPoint.position, Vector2.down, dropDistance, attackCheckLayerMask);
 
-        if (checkPlayer && timer <= 0)
+        if (checkPlayer && enemySkeleton.isCanMove)
         {
             animator.SetTrigger("Attack");
-            timer = hitDuration;
         }
     }
 

@@ -40,13 +40,13 @@ public class EnemySkeleton : Enemy
 
     protected override void Update()
     {
+        base.Update();
+
         if (isDeath)
         {
             animator.SetBool("Death", true);
             return;
         }
-
-        base.Update();
 
         if (facing == Direction.Right)
         {
@@ -60,6 +60,12 @@ public class EnemySkeleton : Enemy
 
         handleFacing();
         handleDropCheck();
+        handleAnimation();
+    }
+
+    private void handleAnimation()
+    {
+        animator.SetFloat("Move", 1);
     }
 
     private void handleDropCheck()

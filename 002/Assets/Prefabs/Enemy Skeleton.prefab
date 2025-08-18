@@ -194,6 +194,7 @@ MonoBehaviour:
   moveSpeed: 3.5
   checkDistance: 0.6
   dropDistance: 2
+  isCanMove: 1
   checkLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -203,6 +204,7 @@ MonoBehaviour:
     m_Bits: 32
   dropPoint: {fileID: 1791294029640170345}
   facing: 0
+  hitDuration: 1
 --- !u!114 &6876008195401007151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +219,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRadius: 0.6
   dropDistance: 0.6
-  hitDuration: 1
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 64

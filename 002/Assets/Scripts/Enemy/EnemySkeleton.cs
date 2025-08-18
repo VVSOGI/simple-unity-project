@@ -59,15 +59,15 @@ public class EnemySkeleton : Enemy
     {
         base.Update();
 
-        if (attackDelaytimer > 0)
-        {
-            attackDelaytimer -= Time.deltaTime;
-            return;
-        }
-
         if (isDeath)
         {
             animator.SetBool("Death", true);
+            return;
+        }
+
+        if (attackDelaytimer > 0)
+        {
+            attackDelaytimer -= Time.deltaTime;
             return;
         }
 

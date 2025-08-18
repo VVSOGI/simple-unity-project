@@ -16,9 +16,9 @@ public class EnemySkeleton : Enemy
     [SerializeField] private Transform checkPoint;
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
+    [SerializeField] private Direction facing = Direction.Right;
 
     private Rigidbody2D rb;
-    private Direction facing = Direction.Right;
     private Animator animator;
     private bool isCanMove = true;
 

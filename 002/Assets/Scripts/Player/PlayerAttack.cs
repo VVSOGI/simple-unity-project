@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private LayerMask enemyMask;
 
     [Header("Basic Attriubes")]
-    [SerializeField] private float attackAction1 = 1;
+    [SerializeField] private float attackDamage = 1;
 
     public void Update()
     {
@@ -30,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in enemyColliders)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackAction1);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 

@@ -11,11 +11,14 @@ public class EnemySkeleton : Enemy
     public float moveSpeed = 2f;
     public float checkDistance = 0.6f;
     public float dropDistance = 2f;
+    public float attackRadius = 1;
 
     [SerializeField] private LayerMask checkLayerMask;
     [SerializeField] private Transform checkPoint;
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
+    [SerializeField] private LayerMask attackLayerMask;
+    [SerializeField] private Transform attackPoint;
 
     private Rigidbody2D rb;
     private Direction facing = Direction.Right;
@@ -113,5 +116,8 @@ public class EnemySkeleton : Enemy
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(dropPoint.position, Vector2.down * dropDistance);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

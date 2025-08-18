@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class EnemySkeletonAttack : MonoBehaviour
 {
+    [Header("Skeleton")]
+    public EnemySkeleton enemySkeleton;
+
+    [Header("Animator")]
+    public Animator animator;
+
+    [Header("Collider")]
+    public Collider2D playerCollider;
+
     [SerializeField] private float attackRadius = 0.6f;
     [SerializeField] private float dropDistance = 0.6f;
     [SerializeField] private LayerMask attackLayerMask;
@@ -9,34 +18,23 @@ public class EnemySkeletonAttack : MonoBehaviour
     [SerializeField] private LayerMask attackCheckLayerMask;
     [SerializeField] private Transform attackCheckPoint;
 
-    [Header("Skeleton")]
-    public EnemySkeleton enemySkeleton;
-
-    [Header("Animator")]
-    public Animator animator;
-
-    [Header("Player")]
-    public Player player;
-
-    [Header("Collider")]
-    public Collider2D enemyCollider;
-
     private float timer = 0;
+    private int damage = 1;
 
     public void AttemptAttack()
     {
-        enemyCollider = Physics2D.OverlapCircle(attackPoint.position, attackRadius, attackCheckLayerMask);
+        playerCollider = Physics2D.OverlapCircle(attackPoint.position, attackRadius, attackCheckLayerMask);
+        if (playerCollider)
+        {
+            Player player = playerCollider.GetComponent<Player>();
+            player.getDamaged(damage);
+        }
     }
 
     private void Start()
     {
         enemySkeleton = GetComponent<EnemySkeleton>();
         animator = GetComponentInChildren<Animator>();
-        GameObject playerObject = GameObject.FindWithTag("Player");
-        if (playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }
     }
 
     private void Update()

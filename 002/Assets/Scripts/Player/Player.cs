@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public PlayerJump playerJump;
 
     private float vectorX = 0;
+    private int totalHealth = 3;
     private InputAction inputAction;
 
     public void changeJumpAndMovementState(bool state)
@@ -29,6 +30,13 @@ public class Player : MonoBehaviour
     public void ChangeFaceRight()
     {
         transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    public void getDamaged(int damage)
+    {
+        if (totalHealth == 0) return;
+
+        totalHealth -= damage;
     }
 
     private void Start()

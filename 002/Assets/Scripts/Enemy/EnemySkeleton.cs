@@ -18,12 +18,12 @@ public class EnemySkeleton : Enemy
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
     [SerializeField] private Direction facing = Direction.Right;
-    [SerializeField] private float hitDuration = 2f;
+    [SerializeField] private float attackDelay = 1f;
 
     private Rigidbody2D rb;
     private Animator animator;
 
-    private float timer = 0;
+    private float attackDelaytimer = 0;
 
     public void ChangeFaceLeft()
     {
@@ -42,7 +42,7 @@ public class EnemySkeleton : Enemy
 
     public void StopMove()
     {
-        timer = hitDuration;
+        attackDelaytimer = attackDelay;
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         isCanMove = false;
         animator.SetFloat("Move", 0);
@@ -59,9 +59,9 @@ public class EnemySkeleton : Enemy
     {
         base.Update();
 
-        if (timer > 0)
+        if (attackDelaytimer > 0)
         {
-            timer -= Time.deltaTime;
+            attackDelaytimer -= Time.deltaTime;
             return;
         }
 

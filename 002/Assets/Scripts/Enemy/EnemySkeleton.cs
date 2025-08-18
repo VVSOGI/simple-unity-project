@@ -11,18 +11,16 @@ public class EnemySkeleton : Enemy
     public float moveSpeed = 2f;
     public float checkDistance = 0.6f;
     public float dropDistance = 2f;
-    public float attackRadius = 1;
 
     [SerializeField] private LayerMask checkLayerMask;
     [SerializeField] private Transform checkPoint;
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
-    [SerializeField] private LayerMask attackLayerMask;
-    [SerializeField] private Transform attackPoint;
 
     private Rigidbody2D rb;
     private Direction facing = Direction.Right;
     private Animator animator;
+    private bool isCanMove = true;
 
     public void ChangeFaceLeft()
     {
@@ -32,6 +30,17 @@ public class EnemySkeleton : Enemy
     public void ChangeFaceRight()
     {
         transform.eulerAngles = new Vector3(0, 0, 0);
+    }
+
+    public void StartMove()
+    {
+        isCanMove = true;
+    }
+
+    public void StopMove()
+    {
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        isCanMove = false;
     }
 
     protected override void Start()
@@ -51,14 +60,17 @@ public class EnemySkeleton : Enemy
             return;
         }
 
-        if (facing == Direction.Right)
+        if (isCanMove)
         {
-            rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
-        }
+            if (facing == Direction.Right)
+            {
+                rb.linearVelocity = new Vector2(moveSpeed, rb.linearVelocity.y);
+            }
 
-        if (facing == Direction.Left)
-        {
-            rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
+            if (facing == Direction.Left)
+            {
+                rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
+            }
         }
 
         handleFacing();
@@ -116,8 +128,5 @@ public class EnemySkeleton : Enemy
 
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(dropPoint.position, Vector2.down * dropDistance);
-
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
     }
 }

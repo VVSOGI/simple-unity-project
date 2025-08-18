@@ -202,6 +202,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   dropPoint: {fileID: 1791294029640170345}
+  facing: 0
 --- !u!114 &6876008195401007151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRadius: 0.6
   dropDistance: 0.6
+  hitDuration: 1
   attackLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -224,6 +226,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackCheckPoint: {fileID: 7850896878076056724}
+  enemySkeleton: {fileID: 4672504121414652256}
+  animator: {fileID: 1691005201791219486}
+  player: {fileID: 0}
+  enemyCollider: {fileID: 0}
 --- !u!1 &5695726651092072890
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,8 +303,9 @@ GameObject:
   - component: {fileID: 3431530224976451852}
   - component: {fileID: 4180182797174605244}
   - component: {fileID: 1691005201791219486}
+  - component: {fileID: 2415084478818531286}
   m_Layer: 0
-  m_Name: Skeleton
+  m_Name: Skeleton Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -396,3 +403,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2415084478818531286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621679293086994216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfe1f996d6ff7d4caacb811279008d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySkeletonAttack: {fileID: 6876008195401007151}
+  enemySkeletonTransform: {fileID: 7375695738328827757}

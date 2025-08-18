@@ -45,7 +45,6 @@ public class EnemySkeleton : Enemy
         attackDelaytimer = attackDelay;
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         isCanMove = false;
-        animator.SetFloat("Move", 0);
     }
 
     protected override void Start()
@@ -91,6 +90,11 @@ public class EnemySkeleton : Enemy
 
     private void handleAnimation()
     {
+        if (!isCanMove)
+        {
+            animator.SetFloat("Move", 0);
+            return;
+        }
         animator.SetFloat("Move", 1);
     }
 

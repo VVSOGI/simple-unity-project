@@ -12,12 +12,12 @@ public class EnemySkeleton : Enemy
     public float checkDistance = 0.6f;
     public float dropDistance = 2f;
     public bool isCanMove = true;
+    public Direction facing = Direction.Right;
 
     [SerializeField] private LayerMask checkLayerMask;
     [SerializeField] private Transform checkPoint;
     [SerializeField] private LayerMask dropLayerMask;
     [SerializeField] private Transform dropPoint;
-    [SerializeField] private Direction facing = Direction.Right;
     [SerializeField] private float attackDelay = 1f;
 
     private Rigidbody2D rb;

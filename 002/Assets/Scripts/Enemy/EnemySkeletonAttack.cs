@@ -26,8 +26,10 @@ public class EnemySkeletonAttack : MonoBehaviour
         playerCollider = Physics2D.OverlapCircle(attackPoint.position, attackRadius, attackCheckLayerMask);
         if (playerCollider)
         {
+            Direction direction = enemySkeleton.facing;
+
             Player player = playerCollider.GetComponent<Player>();
-            player.getDamaged(damage);
+            player.getDamaged(damage, direction);
         }
     }
 

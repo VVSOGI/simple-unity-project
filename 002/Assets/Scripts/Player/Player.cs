@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,10 +12,21 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public PlayerJump playerJump;
+    public PlayerPhysicsEffect playerPhysicsEffect;
+
+    [SerializeField] private int totalHealth = 100;
 
     private float vectorX = 0;
-    private int totalHealth = 3;
+    private bool isKnockBack = false;
+    private Direction knockBackDirection;
     private InputAction inputAction;
+
+    IEnumerator KnockbackProcess(Direction direction)
+    {
+        isKnockBack = true;
+        yield return StartCoroutine(playerPhysicsEffect.SmoothKnockback(direction));
+        isKnockBack = false;
+    }
 
     public void changeJumpAndMovementState(bool state)
     {
@@ -32,9 +44,20 @@ public class Player : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    public void getDamaged(int damage)
+    public void getDamaged(int damage, Direction direction)
     {
         if (totalHealth == 0) return;
+        knockBackDirection = direction;
+
+        if (direction == Direction.Left)
+        {
+            StartCoroutine(KnockbackProcess(direction));
+        }
+
+        if (direction == Direction.Right)
+        {
+            StartCoroutine(KnockbackProcess(direction));
+        }
 
         totalHealth -= damage;
     }
@@ -49,16 +72,7 @@ public class Player : MonoBehaviour
         Vector2 moveVector = inputAction.ReadValue<Vector2>();
         vectorX = NormalizeVectorX(moveVector.x);
 
-        if (!canMove)
-        {
-            rb.linearVelocity = new Vector2(vectorX * moveSpeed / 4, rb.linearVelocity.y);
-            return;
-        }
-
-        if (canMove)
-        {
-            rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
-        }
+        handleMove();
 
         if (vectorX > 0)
         {
@@ -78,6 +92,30 @@ public class Player : MonoBehaviour
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Move", 0);
+        }
+    }
+
+    private void handleMove()
+    {
+        if (isKnockBack)
+        {
+            Vector2 velocity = rb.linearVelocity;
+            Debug.Log($"넉백 중 - 속도: ({velocity.x:F2}, {velocity.y:F2}), " +
+                      $"수평속력: {Mathf.Abs(velocity.x):F2}, " +
+                      $"방향: {knockBackDirection}");
+            return;
+        }
+
+
+        if (!canMove)
+        {
+            rb.linearVelocity = new Vector2(vectorX * moveSpeed / 4, rb.linearVelocity.y);
+            return;
+        }
+
+        if (canMove)
+        {
+            rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
         }
     }
 

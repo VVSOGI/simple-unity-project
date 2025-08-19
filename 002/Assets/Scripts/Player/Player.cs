@@ -100,9 +100,23 @@ public class Player : MonoBehaviour
         if (isKnockBack)
         {
             Vector2 velocity = rb.linearVelocity;
-            Debug.Log($"넉백 중 - 속도: ({velocity.x:F2}, {velocity.y:F2}), " +
-                      $"수평속력: {Mathf.Abs(velocity.x):F2}, " +
-                      $"방향: {knockBackDirection}");
+            if (Mathf.Abs(vectorX) > 0.1f)
+            {
+                float currentVelocityX = velocity.x;
+                float inputDirection = vectorX; // -1 ~ 1
+
+                bool isUsingAcceleration = (currentVelocityX > 0 && inputDirection > 0) ||
+                                         (currentVelocityX < 0 && inputDirection < 0);
+
+                if (isUsingAcceleration)
+                {
+                    float boostForce = inputDirection * moveSpeed * 0.2f;
+                    float newVelocityX = currentVelocityX + boostForce * Time.fixedDeltaTime * 60f;
+
+                    rb.linearVelocity = new Vector2(newVelocityX, velocity.y);
+                }
+            }
+
             return;
         }
 
@@ -116,6 +130,7 @@ public class Player : MonoBehaviour
         if (canMove)
         {
             rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
+            return;
         }
     }
 

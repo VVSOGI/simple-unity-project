@@ -18,14 +18,15 @@ public class Player : MonoBehaviour
 
     private float vectorX = 0;
     private bool isKnockBack = false;
-    private Direction knockBackDirection;
     private InputAction inputAction;
 
     IEnumerator KnockbackProcess(Direction direction)
     {
         isKnockBack = true;
+        animator.SetBool("IsKnockBack", true);
         yield return StartCoroutine(playerPhysicsEffect.SmoothKnockback(direction));
         isKnockBack = false;
+        animator.SetBool("IsKnockBack", false);
     }
 
     public void changeJumpAndMovementState(bool state)
@@ -47,7 +48,6 @@ public class Player : MonoBehaviour
     public void getDamaged(int damage, Direction direction)
     {
         if (totalHealth == 0) return;
-        knockBackDirection = direction;
 
         if (direction == Direction.Left)
         {
@@ -102,8 +102,16 @@ public class Player : MonoBehaviour
             Vector2 velocity = rb.linearVelocity;
             if (Mathf.Abs(vectorX) > 0.1f)
             {
+                if (!canMove)
+                {
+                    changeJumpAndMovementState(true);
+                }
+
+                animator.SetBool("IsKnockBack", false);
+                animator.SetFloat("Move", 1);
+
                 float currentVelocityX = velocity.x;
-                float inputDirection = vectorX; // -1 ~ 1
+                float inputDirection = vectorX;
 
                 bool isUsingAcceleration = (currentVelocityX > 0 && inputDirection > 0) ||
                                          (currentVelocityX < 0 && inputDirection < 0);

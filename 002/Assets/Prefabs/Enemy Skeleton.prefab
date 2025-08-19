@@ -188,13 +188,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: Skeleton
-  totalHealth: 3
+  totalHealth: 10
   timer: 0
   sr: {fileID: 0}
   moveSpeed: 3.5
   checkDistance: 0.6
   dropDistance: 2
   isCanMove: 1
+  facing: 0
   checkLayerMask:
     serializedVersion: 2
     m_Bits: 256
@@ -203,8 +204,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 32
   dropPoint: {fileID: 1791294029640170345}
-  facing: 0
-  hitDuration: 1
+  attackDelay: 1
 --- !u!114 &6876008195401007151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6fe6415eb9d5db4d9b00512c5929fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemySkeleton: {fileID: 4672504121414652256}
+  animator: {fileID: 1691005201791219486}
+  playerCollider: {fileID: 0}
   attackRadius: 0.6
   dropDistance: 0.6
   attackLayerMask:
@@ -227,10 +230,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackCheckPoint: {fileID: 7850896878076056724}
-  enemySkeleton: {fileID: 4672504121414652256}
-  animator: {fileID: 1691005201791219486}
-  player: {fileID: 0}
-  enemyCollider: {fileID: 0}
 --- !u!1 &5695726651092072890
 GameObject:
   m_ObjectHideFlags: 0

@@ -812,10 +812,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4672504121414652256, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
-      propertyPath: totalHealth
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5154021365893112396, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
       propertyPath: m_Name
       value: Enemy Skeleton

@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
         yield return StartCoroutine(playerPhysicsEffect.SmoothKnockback(direction));
         isKnockBack = false;
         animator.SetBool("IsKnockBack", false);
+
+        if (!canMove)
+        {
+            changeJumpAndMovementState(true);
+        }
     }
 
     public void changeJumpAndMovementState(bool state)
@@ -110,10 +115,6 @@ public class Player : MonoBehaviour
         if (isKnockBack)
         {
             Vector2 velocity = rb.linearVelocity;
-            if (!canMove)
-            {
-                changeJumpAndMovementState(true);
-            }
 
             if (Mathf.Abs(vectorX) > 0.1f)
             {

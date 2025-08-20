@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4896707736097814017}
   - component: {fileID: 4672504121414652256}
   - component: {fileID: 6876008195401007151}
+  - component: {fileID: 6711012126258397868}
   m_Layer: 7
   m_Name: Enemy Skeleton
   m_TagString: Untagged
@@ -174,7 +175,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!114 &4672504121414652256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,11 +191,12 @@ MonoBehaviour:
   enemyName: Skeleton
   totalHealth: 10
   timer: 0
+  hitDuration: 1
   sr: {fileID: 0}
+  isCanMove: 1
   moveSpeed: 3.5
   checkDistance: 0.6
   dropDistance: 2
-  isCanMove: 1
   facing: 0
   checkLayerMask:
     serializedVersion: 2
@@ -230,6 +232,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackCheckPoint: {fileID: 7850896878076056724}
+--- !u!114 &6711012126258397868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5154021365893112396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db0304d3996a70144a4a1223d64ca8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackDistance: 20
+  knockBackTime: 2
+  knockBackDuration: 0.5
+  timer: 0
+  rb: {fileID: 0}
 --- !u!1 &5695726651092072890
 GameObject:
   m_ObjectHideFlags: 0

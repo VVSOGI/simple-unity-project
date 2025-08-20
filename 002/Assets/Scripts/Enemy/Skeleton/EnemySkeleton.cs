@@ -70,6 +70,19 @@ public class EnemySkeleton : Enemy
             return;
         }
 
+        handleMove();
+        handleFacing();
+        handleDropCheck();
+        handleAnimation();
+    }
+
+    private void handleMove()
+    {
+        if (isKnockBack)
+        {
+            return;
+        }
+
         if (isCanMove)
         {
             if (facing == Direction.Right)
@@ -82,10 +95,6 @@ public class EnemySkeleton : Enemy
                 rb.linearVelocity = new Vector2(-moveSpeed, rb.linearVelocity.y);
             }
         }
-
-        handleFacing();
-        handleDropCheck();
-        handleAnimation();
     }
 
     private void handleAnimation()

@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public bool isKnockBack;
 
     [Header("Enemy Basic Attributes")]
     [SerializeField] private string enemyName;
@@ -9,20 +11,40 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float timer;
     protected private bool isDeath = false;
 
-    private float hitDuration = 1f;
+    [SerializeField] private float hitDuration = 1f;
     [SerializeField] private SpriteRenderer sr;
 
-    public void TakeDamage(float damage)
+    private EnemyPhysicsEffect enemyPhysicsEffect;
+
+    IEnumerator KnockbackProcess(Direction direction)
+    {
+        isKnockBack = true;
+        yield return StartCoroutine(enemyPhysicsEffect.SmoothKnockback(direction));
+        isKnockBack = false;
+    }
+
+    public void TakeDamage(float damage, Direction direction)
     {
         if (isDeath) return;
 
         sr.color = Color.red;
         timer = hitDuration;
         totalHealth -= damage;
+
+        if (direction == Direction.Left)
+        {
+            StartCoroutine(KnockbackProcess(direction));
+        }
+
+        if (direction == Direction.Right)
+        {
+            StartCoroutine(KnockbackProcess(direction));
+        }
     }
 
     protected virtual void Start()
     {
+        enemyPhysicsEffect = GetComponent<EnemyPhysicsEffect>();
         sr = GetComponentInChildren<SpriteRenderer>();
     }
 

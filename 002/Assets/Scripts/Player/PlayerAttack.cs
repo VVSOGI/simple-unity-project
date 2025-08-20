@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Player")]
+    public Player player;
+
     [Header("Animator")]
     public Animator animator;
 
@@ -19,6 +22,11 @@ public class PlayerAttack : MonoBehaviour
     [Header("Basic Attriubes")]
     [SerializeField] private float attackDamage = 1;
 
+    public void Start()
+    {
+        player = GetComponent<Player>();
+    }
+
     public void Update()
     {
         HandleInput();
@@ -27,10 +35,12 @@ public class PlayerAttack : MonoBehaviour
     public void DamageEnemies()
     {
         enemyColliders = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, enemyMask);
+        Direction direction = player.facing;
+
 
         foreach (Collider2D enemy in enemyColliders)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage, direction);
         }
     }
 

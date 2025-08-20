@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public string playerName = "Benny";
     public float moveSpeed = 8f;
     public bool canMove = true;
+    public Direction facing;
 
     public Rigidbody2D rb;
     public Animator animator;
@@ -90,14 +91,16 @@ public class Player : MonoBehaviour
     {
         if (canMove)
         {
-            if (vectorX > 0)
-            {
-                ChangeFaceRight();
-            }
-
             if (vectorX < 0)
             {
                 ChangeFaceLeft();
+                facing = Direction.Left;
+            }
+
+            if (vectorX > 0)
+            {
+                ChangeFaceRight();
+                facing = Direction.Right;
             }
         }
     }

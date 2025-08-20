@@ -110,13 +110,13 @@ public class Player : MonoBehaviour
         if (isKnockBack)
         {
             Vector2 velocity = rb.linearVelocity;
+            if (!canMove)
+            {
+                changeJumpAndMovementState(true);
+            }
+
             if (Mathf.Abs(vectorX) > 0.1f)
             {
-                if (!canMove)
-                {
-                    changeJumpAndMovementState(true);
-                }
-
                 animator.SetBool("IsKnockBack", false);
                 animator.SetFloat("Move", 1);
 

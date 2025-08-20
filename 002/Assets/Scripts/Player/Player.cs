@@ -73,16 +73,7 @@ public class Player : MonoBehaviour
         vectorX = NormalizeVectorX(moveVector.x);
 
         handleMove();
-
-        if (vectorX > 0)
-        {
-            ChangeFaceRight();
-        }
-
-        if (vectorX < 0)
-        {
-            ChangeFaceLeft();
-        }
+        handleFaceDirection();
 
         if (Math.Abs(moveVector.x) > 0.1f)
         {
@@ -92,6 +83,22 @@ public class Player : MonoBehaviour
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Move", 0);
+        }
+    }
+
+    private void handleFaceDirection()
+    {
+        if (canMove)
+        {
+            if (vectorX > 0)
+            {
+                ChangeFaceRight();
+            }
+
+            if (vectorX < 0)
+            {
+                ChangeFaceLeft();
+            }
         }
     }
 

@@ -11,7 +11,6 @@ public class EnemySkeleton : Enemy
     public float moveSpeed = 2f;
     public float checkDistance = 0.6f;
     public float dropDistance = 2f;
-    public bool isCanMove = true;
     public Direction facing = Direction.Right;
 
     [SerializeField] private LayerMask checkLayerMask;
@@ -21,8 +20,6 @@ public class EnemySkeleton : Enemy
     [SerializeField] private float attackDelay = 1f;
 
     private Rigidbody2D rb;
-    private Animator animator;
-
     private float attackDelaytimer = 0;
 
     public void ChangeFaceLeft()
@@ -35,12 +32,12 @@ public class EnemySkeleton : Enemy
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
-    public void StartMove()
+    public override void StartMove()
     {
         isCanMove = true;
     }
 
-    public void StopMove()
+    public override void StopMove()
     {
         attackDelaytimer = attackDelay;
         rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);

@@ -1,27 +1,40 @@
 using System.Collections;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    public bool isKnockBack;
 
     [Header("Enemy Basic Attributes")]
     [SerializeField] private string enemyName;
     [SerializeField] private float totalHealth = 3;
     [SerializeField] private float timer;
-    protected private bool isDeath = false;
-
     [SerializeField] private float hitDuration = 1f;
     [SerializeField] private SpriteRenderer sr;
+
+    public bool isCanMove = true;
+    protected private bool isDeath = false;
+    protected private bool isKnockBack = false;
+    protected private Animator animator;
 
     private EnemyPhysicsEffect enemyPhysicsEffect;
 
     IEnumerator KnockbackProcess(Direction direction)
     {
         isKnockBack = true;
+        animator.SetBool("IsKnockBack", true);
         yield return StartCoroutine(enemyPhysicsEffect.SmoothKnockback(direction));
+
+        if (!isCanMove)
+        {
+            StartMove();
+        }
+
         isKnockBack = false;
+        animator.SetBool("IsKnockBack", false);
     }
+
+    public abstract void StartMove();
+    public abstract void StopMove();
 
     public void TakeDamage(float damage, Direction direction)
     {
@@ -46,6 +59,7 @@ public class Enemy : MonoBehaviour
     {
         enemyPhysicsEffect = GetComponent<EnemyPhysicsEffect>();
         sr = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Update()

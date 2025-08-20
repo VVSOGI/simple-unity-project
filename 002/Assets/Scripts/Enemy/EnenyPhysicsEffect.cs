@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class EnemyPhysicsEffect : MonoBehaviour
 {
-    public float knockBackDistance = 2f;
+    public float knockBackDistance = 20f;
     public float knockBackTime = 2f;
     public float knockBackDuration = 0.5f;
     public float timer = 0f;

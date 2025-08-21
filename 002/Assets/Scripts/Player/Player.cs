@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Footstep Audio")]
+    public AudioSource footstepAudioSource;
+    public AudioClip[] footstepSounds;
+
+    [Header("Basic Attributes")]
     public string playerName = "Benny";
     public float moveSpeed = 8f;
     public bool canMove = true;

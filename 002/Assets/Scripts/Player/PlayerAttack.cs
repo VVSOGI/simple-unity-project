@@ -63,6 +63,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void PerformAttack()
     {
+        player.StopFootstepLoop();
         animator.SetTrigger("Attack");
     }
 

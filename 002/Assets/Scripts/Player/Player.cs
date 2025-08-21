@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [Header("Footstep Audio")]
     public AudioSource footstepAudioSource;
     public AudioClip[] footstepSounds;
+    [SerializeField] private float footstepDuration = 0.4f;
+    private bool isWalkingSound = false;
 
     [Header("Basic Attributes")]
     public string playerName = "Benny";
@@ -73,6 +75,20 @@ public class Player : MonoBehaviour
         totalHealth -= damage;
     }
 
+    public void StartFootstepLoop()
+    {
+        if (isWalkingSound) return;
+        isWalkingSound = true;
+        InvokeRepeating(nameof(PlayRandomFootstep), 0f, footstepDuration);
+    }
+
+    public void StopFootstepLoop()
+    {
+        if (!isWalkingSound) return;
+        isWalkingSound = false;
+        CancelInvoke(nameof(PlayRandomFootstep));
+    }
+
     private void Start()
     {
         inputAction = InputSystem.actions.FindAction("Move");
@@ -89,11 +105,22 @@ public class Player : MonoBehaviour
         if (Math.Abs(moveVector.x) > 0.1f)
         {
             animator.SetFloat("Move", 1);
+            StartFootstepLoop();
         }
 
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Move", 0);
+            StopFootstepLoop();
+        }
+    }
+
+    private void PlayRandomFootstep()
+    {
+        if (footstepSounds.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, footstepSounds.Length);
+            footstepAudioSource.PlayOneShot(footstepSounds[randomIndex]);
         }
     }
 

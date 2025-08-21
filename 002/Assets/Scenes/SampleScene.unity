@@ -536,108 +536,6 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7814417195606535486, guid: 63afc1d445881824aa51b52763747e5f, type: 3}
   m_PrefabInstance: {fileID: 857118294}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1745099391 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5149334064180093799, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-  m_PrefabInstance: {fileID: 391586440140713192}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1745099400
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745099391}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1860050089
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,9 +878,37 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-      propertyPath: footstepAudioSource
+      propertyPath: footstepSounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[0]'
       value: 
-      objectReference: {fileID: 1745099400}
+      objectReference: {fileID: 8300000, guid: fa2ffa238df274a498a40939c602315b, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e39c9b67d6356646ac5c9575f7a035c, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bdd435e17b4f3784387d01515b21c843, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: e260d9057aa74e34896d7aff862ed7b2, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 03c4bd2d9c4920f4f9d0a179113d2ff8, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3cc21b36a54a1384e94e88a39c794bf4, type: 3}
+    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: 'footstepSounds.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: d9dc92c16e1a9804b802005ffea20d96, type: 3}
     - target: {fileID: 6040665130651821937, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: dustPrefab
       value: 
@@ -1030,10 +956,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5149334064180093799, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1745099400}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

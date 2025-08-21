@@ -3,6 +3,10 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private float hitTiming = 0.3f;
+    public AudioSource audioSource;
+    public AudioClip hitSound;
 
     [Header("Enemy Basic Attributes")]
     [SerializeField] private string enemyName;
@@ -39,6 +43,7 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(float damage, Direction direction)
     {
         if (isDeath) return;
+        audioSource.PlayOneShot(hitSound);
 
         sr.color = Color.red;
         timer = hitDuration;

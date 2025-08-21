@@ -96,22 +96,20 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Vector2 moveVector = inputAction.ReadValue<Vector2>();
-        vectorX = NormalizeVectorX(moveVector.x);
-
         handleMove();
         handleFaceDirection();
+
+        Vector2 moveVector = inputAction.ReadValue<Vector2>();
+        vectorX = NormalizeVectorX(moveVector.x);
 
         if (Math.Abs(moveVector.x) > 0.1f)
         {
             animator.SetFloat("Move", 1);
-            StartFootstepLoop();
         }
 
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Move", 0);
-            StopFootstepLoop();
         }
     }
 
@@ -171,17 +169,34 @@ public class Player : MonoBehaviour
             return;
         }
 
-
         if (!canMove)
         {
             rb.linearVelocity = new Vector2(vectorX * moveSpeed / 4, rb.linearVelocity.y);
+            StopFootstepLoop();
             return;
         }
 
         if (canMove)
         {
+            Vector2 moveVector = inputAction.ReadValue<Vector2>();
+            vectorX = NormalizeVectorX(moveVector.x);
+
+            if (Math.Abs(moveVector.x) > 0.1f)
+            {
+                StartFootstepLoop();
+            }
+
+            if (Math.Abs(moveVector.x) < 0.1f)
+            {
+                StopFootstepLoop();
+            }
+
+            if (!playerJump.isGrounded)
+            {
+                StopFootstepLoop();
+            }
+
             rb.linearVelocity = new Vector2(vectorX * moveSpeed, rb.linearVelocity.y);
-            return;
         }
     }
 

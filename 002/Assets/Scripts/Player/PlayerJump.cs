@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerJump : MonoBehaviour
 {
+    [Header("Player")]
+    public Player player;
+
     [Header("Jump Parameters")]
     public float jumpHeight = 3.5f;
     public float timeToApex = 0.3f;
@@ -35,7 +38,7 @@ public class PlayerJump : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        player = GetComponent<Player>();
 
         CalculatePhysics();
     }
@@ -93,6 +96,7 @@ public class PlayerJump : MonoBehaviour
     private void Jump()
     {
         CalculatePhysics();
+        player.StopFootstepLoop();
         animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
     }

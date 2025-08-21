@@ -871,7 +871,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3825026001839025438, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: m_Volume
-      value: 0.45
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4806814949650258828, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: mainCamera

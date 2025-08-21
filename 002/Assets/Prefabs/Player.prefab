@@ -135,6 +135,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 03c4bd2d9c4920f4f9d0a179113d2ff8, type: 3}
   - {fileID: 8300000, guid: 3cc21b36a54a1384e94e88a39c794bf4, type: 3}
   - {fileID: 8300000, guid: d9dc92c16e1a9804b802005ffea20d96, type: 3}
+  footstepDuration: 0.3
   playerName: Benny
   moveSpeed: 8
   canMove: 1
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42fede683cc8454a980d99301ea651c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   jumpHeight: 3
   timeToApex: 0.35
   timeToFall: 0.35
@@ -317,7 +319,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

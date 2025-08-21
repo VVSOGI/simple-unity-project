@@ -3,6 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [Header("Audio")]
+    public AudioSource audioSource;
+    public AudioClip attackSound;
+
     [Header("Player")]
     public Player player;
 
@@ -30,6 +34,11 @@ public class PlayerAttack : MonoBehaviour
     public void Update()
     {
         HandleInput();
+    }
+
+    public void PlayAttackSound()
+    {
+        audioSource.PlayOneShot(attackSound);
     }
 
     public void DamageEnemies()

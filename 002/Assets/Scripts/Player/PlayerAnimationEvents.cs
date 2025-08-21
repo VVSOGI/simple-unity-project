@@ -9,6 +9,11 @@ public class PlayerAnimationEvents : MonoBehaviour
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Camera mainCamera;
 
+    public void PlaySound()
+    {
+        playerAttack.PlayAttackSound();
+    }
+
     public void AttemptAttack()
     {
         playerAttack.DamageEnemies();

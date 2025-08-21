@@ -536,28 +536,6 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7814417195606535486, guid: 63afc1d445881824aa51b52763747e5f, type: 3}
   m_PrefabInstance: {fileID: 857118294}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1581427929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5154021365893112396, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
-  m_PrefabInstance: {fileID: 210631605399607067}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1581427935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1581427929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db0304d3996a70144a4a1223d64ca8c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockBackDistance: 20
-  knockBackTime: 2
-  knockBackDuration: 0.5
-  timer: 0
-  rb: {fileID: 0}
 --- !u!1 &1860050089
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +814,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4896707736097814017, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
       propertyPath: m_Constraints
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5154021365893112396, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
       propertyPath: m_Name
@@ -885,10 +863,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5154021365893112396, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1581427935}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 580dd3363dd4a2745817579eaf5e47e6, type: 3}
 --- !u!1001 &391586440140713192
 PrefabInstance:

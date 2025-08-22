@@ -166,6 +166,32 @@ public class Player : MonoBehaviour
 
     private void handleMove()
     {
+        if (playerJump.isJumpDash)
+        {
+            Vector2 velocity = rb.linearVelocity;
+
+            if (Mathf.Abs(vectorX) > 0.1f)
+            {
+                animator.SetFloat("Move", 1);
+
+                float currentVelocityX = velocity.x;
+                float inputDirection = vectorX;
+
+                bool isUsingAcceleration = (currentVelocityX > 0 && inputDirection > 0) ||
+                                         (currentVelocityX < 0 && inputDirection < 0);
+
+                if (isUsingAcceleration)
+                {
+                    float boostForce = inputDirection * moveSpeed * 0.2f;
+                    float newVelocityX = currentVelocityX + boostForce * Time.fixedDeltaTime * 60f;
+
+                    rb.linearVelocity = new Vector2(newVelocityX, velocity.y);
+                }
+            }
+
+            return;
+        }
+
         if (isKnockBack)
         {
             Vector2 velocity = rb.linearVelocity;

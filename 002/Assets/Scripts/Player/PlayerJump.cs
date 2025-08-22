@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,11 +7,15 @@ public class PlayerJump : MonoBehaviour
     [Header("Player")]
     public Player player;
 
+    [Header("Player Physics Effect")]
+    public PlayerPhysicsEffect playerPhysicsEffect;
+
     [Header("Jump Parameters")]
     public float jumpHeight = 3.5f;
     public float timeToApex = 0.3f;
     public float timeToFall = 0.3f;
     public bool canJump = true;
+    public bool isJumpDash = false;
 
     [Header("Advanced Features")]
     public float coyoteTime = 0.2f;
@@ -35,7 +40,13 @@ public class PlayerJump : MonoBehaviour
     private float downGravity;
     private float jumpVelocity;
 
-
+    IEnumerator KnockbackProcess(Direction direction)
+    {
+        isJumpDash = true;
+        animator.SetBool("IsKnockBack", true);
+        yield return StartCoroutine(playerPhysicsEffect.QuickJumpDash(direction));
+        animator.SetBool("IsKnockBack", false);
+    }
 
     private void Start()
     {
@@ -55,8 +66,17 @@ public class PlayerJump : MonoBehaviour
     private void Update()
     {
         HandleInput();
+        HandleJumpDash();
         HandleCoyoteTime();
         ApplyCustomGravity();
+    }
+
+    private void HandleJumpDash()
+    {
+        if (Keyboard.current[Key.LeftShift].wasPressedThisFrame && !isJumpDash && !isGrounded)
+        {
+            StartCoroutine(KnockbackProcess(player.facing));
+        }
     }
 
     private void HandleInput()
@@ -131,6 +151,7 @@ public class PlayerJump : MonoBehaviour
             isGrounded = true;
             firstJump = false;
             secondJump = false;
+            isJumpDash = false;
             PlayDustEffect();
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [Header("Audio")]
-    [SerializeField] private float hitTiming = 0.3f;
     public AudioSource audioSource;
     public AudioClip hitSound;
 

@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
 
     private float vectorX = 0;
     private bool isKnockBack = false;
+    private bool isDash = false;
     private InputAction inputAction;
 
     IEnumerator KnockbackProcess(Direction direction)
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
         Vector2 moveVector = inputAction.ReadValue<Vector2>();
         vectorX = NormalizeVectorX(moveVector.x);
 
+
         if (Math.Abs(moveVector.x) > 0.1f)
         {
             animator.SetFloat("Move", 1);
@@ -110,6 +112,24 @@ public class Player : MonoBehaviour
         if (Math.Abs(moveVector.x) < 0.1f)
         {
             animator.SetFloat("Move", 0);
+        }
+
+        if (isDash)
+        {
+            moveSpeed = 12f;
+        }
+        else
+        {
+            moveSpeed = 8f;
+        }
+
+        if (Keyboard.current[Key.LeftShift].isPressed)
+        {
+            isDash = true;
+        }
+        else
+        {
+            isDash = false;
         }
     }
 

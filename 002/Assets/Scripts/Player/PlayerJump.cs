@@ -26,6 +26,7 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool firstJump = false;
+    private bool secondJump = false;
 
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
@@ -33,6 +34,7 @@ public class PlayerJump : MonoBehaviour
     private float upGravity;
     private float downGravity;
     private float jumpVelocity;
+
 
 
     private void Start()
@@ -54,7 +56,6 @@ public class PlayerJump : MonoBehaviour
     {
         HandleInput();
         HandleCoyoteTime();
-        HandleJumpBuffer();
         ApplyCustomGravity();
     }
 
@@ -63,6 +64,19 @@ public class PlayerJump : MonoBehaviour
         if (Keyboard.current[Key.Space].wasPressedThisFrame)
         {
             jumpBufferCounter = jumpBufferTime;
+            if (firstJump && !secondJump)
+            {
+                Jump();
+                secondJump = true;
+            }
+
+            if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump && canJump)
+            {
+                Jump();
+                jumpBufferCounter = 0f;
+                coyoteTimeCounter = 0f;
+                firstJump = true;
+            }
         }
         else
         {
@@ -79,17 +93,6 @@ public class PlayerJump : MonoBehaviour
         else
         {
             coyoteTimeCounter -= Time.deltaTime;
-        }
-    }
-
-    private void HandleJumpBuffer()
-    {
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f && !firstJump && canJump)
-        {
-            Jump();
-            jumpBufferCounter = 0f;
-            coyoteTimeCounter = 0f;
-            firstJump = true;
         }
     }
 
@@ -127,6 +130,7 @@ public class PlayerJump : MonoBehaviour
             animator.SetBool("IsGrounded", true);
             isGrounded = true;
             firstJump = false;
+            secondJump = false;
             PlayDustEffect();
         }
     }

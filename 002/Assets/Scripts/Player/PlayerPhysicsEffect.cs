@@ -40,7 +40,6 @@ public class PlayerPhysicsEffect : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         jumpDashTimer = 0f;
     }
 
@@ -60,7 +59,6 @@ public class PlayerPhysicsEffect : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
 
-        rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         knockBackTimer = 0f;
     }
 }

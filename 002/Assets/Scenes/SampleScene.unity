@@ -869,10 +869,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3825026001839025438, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-      propertyPath: m_Volume
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 4806814949650258828, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: mainCamera
       value: 
@@ -880,10 +876,6 @@ PrefabInstance:
     - target: {fileID: 5149334064180093799, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5222101944169152143, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-      propertyPath: footstepDuration
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6040665130651821937, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: dustPrefab

@@ -531,17 +531,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1104981314 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2509088261364805727, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-  m_PrefabInstance: {fileID: 391586440140713192}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dc4dad25980d9c418dac40a40f8e536, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!198 &1420530188 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7814417195606535486, guid: 63afc1d445881824aa51b52763747e5f, type: 3}
@@ -880,6 +869,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2509088261364805727, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: jumpDashDistance
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509088261364805727, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
+      propertyPath: jumpDashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4806814949650258828, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: mainCamera
       value: 
@@ -893,9 +890,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420530188}
     - target: {fileID: 6040665130651821937, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
-      propertyPath: playerPhysicsEffect
-      value: 
-      objectReference: {fileID: 1104981314}
+      propertyPath: timeToApex
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 8203432497321170331, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.03

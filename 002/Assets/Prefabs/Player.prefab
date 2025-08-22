@@ -158,10 +158,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerPhysicsEffect: {fileID: 2509088261364805727}
   jumpHeight: 3
   timeToApex: 0.35
   timeToFall: 0.35
   canJump: 1
+  isJumpDash: 0
   coyoteTime: 0.2
   jumpBufferTime: 0.2
   lowJumpMultiplier: 2
@@ -207,7 +209,11 @@ MonoBehaviour:
   knockBackDistance: 40
   knockBackTime: 2
   knockBackDuration: 0.5
-  timer: 0
+  knockBackTimer: 0
+  jumpDashDistance: 40
+  jumpDashTime: 2
+  jumpDashDuration: 0.5
+  jumpDashTimer: 0
   rb: {fileID: 0}
 --- !u!82 &3118119728461818526
 AudioSource:

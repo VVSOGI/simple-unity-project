@@ -871,11 +871,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2509088261364805727, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: jumpDashDistance
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 2509088261364805727, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: jumpDashDuration
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4806814949650258828, guid: 887cd1fea5c0528409b59a6d2daab238, type: 3}
       propertyPath: mainCamera

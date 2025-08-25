@@ -44,7 +44,9 @@ public class PlayerJump : MonoBehaviour
     {
         isJumpDash = true;
         downGravity = 0f;
+        animator.SetBool("IsJumpDash", true);
         yield return StartCoroutine(playerPhysicsEffect.QuickJumpDash(direction));
+        animator.SetBool("IsJumpDash", false);
         CalculatePhysics();
     }
 

@@ -174,18 +174,9 @@ public class Player : MonoBehaviour
             {
                 animator.SetFloat("Move", 1);
 
-                float currentVelocityX = velocity.x;
-                float inputDirection = vectorX;
-
-                bool isUsingAcceleration = (currentVelocityX > 0 && inputDirection > 0) ||
-                                         (currentVelocityX < 0 && inputDirection < 0);
-
-                if (isUsingAcceleration)
+                if (Math.Abs(velocity.x) < Math.Abs(vectorX * moveSpeed))
                 {
-                    float boostForce = inputDirection * moveSpeed * 0.2f;
-                    float newVelocityX = currentVelocityX + boostForce * Time.fixedDeltaTime * 60f;
-
-                    rb.linearVelocity = new Vector2(newVelocityX, velocity.y);
+                    rb.linearVelocity = new Vector2(vectorX * moveSpeed * 0.8f, velocity.y);
                 }
             }
 

@@ -43,9 +43,9 @@ public class PlayerJump : MonoBehaviour
     IEnumerator KnockbackProcess(Direction direction)
     {
         isJumpDash = true;
-        animator.SetBool("IsKnockBack", true);
+        downGravity = 0f;
         yield return StartCoroutine(playerPhysicsEffect.QuickJumpDash(direction));
-        animator.SetBool("IsKnockBack", false);
+        CalculatePhysics();
     }
 
     private void Start()

@@ -5,13 +5,11 @@ public class PlayerPhysicsEffect : MonoBehaviour
 {
     [Header("KnockBack")]
     public float knockBackDistance = 40f;
-    public float knockBackTime = 2f;
     public float knockBackDuration = 0.5f;
     public float knockBackTimer = 0f;
 
     [Header("Quick Jump Dash")]
     public float jumpDashDistance = 40f;
-    public float jumpDashTime = 2f;
     public float jumpDashDuration = 0.5f;
     public float jumpDashTimer = 0f;
 

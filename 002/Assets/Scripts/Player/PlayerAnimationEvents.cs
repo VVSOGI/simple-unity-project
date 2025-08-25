@@ -42,7 +42,15 @@ public class PlayerAnimationEvents : MonoBehaviour
 
         Vector3 direction = (mouseWorldPos - playerTransform.position).normalized;
 
-        if (direction.x > 0) player.ChangeFaceRight();
-        if (direction.x < 0) player.ChangeFaceLeft();
+        if (direction.x > 0)
+        {
+            player.ChangeFaceRight();
+            player.facing = Direction.Right;
+        }
+        if (direction.x < 0)
+        {
+            player.ChangeFaceLeft();
+            player.facing = Direction.Left;
+        }
     }
 }

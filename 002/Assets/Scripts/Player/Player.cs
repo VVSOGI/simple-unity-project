@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public string playerName = "Benny";
     public float moveSpeed = 8f;
     public bool canMove = true;
-    public Direction facing;
+    public Direction facing = Direction.Right;
 
     public Rigidbody2D rb;
     public Animator animator;
